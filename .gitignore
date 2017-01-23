@@ -8,6 +8,7 @@ from email.MIMEText import MIMEText
 from email.MIMEBase import MIMEBase
 from email import encoders
 
+#change the path
 test = path.relpath("/home/ubuntu/Desktop/Details.csv")
 
 def function1():
