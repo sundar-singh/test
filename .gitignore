@@ -8,24 +8,24 @@ from email.MIMEText import MIMEText
 from email.MIMEBase import MIMEBase
 from email import encoders
 
-test = path.relpath("/home/sollet/Desktop/Details.csv")
+test = path.relpath("/home/ubuntu/Desktop/Details.csv")
 
 def function1():
    tuple = (
-       (3L, 'psyam@solletsoft.com', 'dem000000002', 'Jameel syed', '9845658940', 11.11),
-       (3L, 'psyam@solletsoft.com', 'dem000000003', 'Kumar M', '8018512345', 12.55),
-       (3L, 'psyam@solletsoft.com', 'dem000000004', 'Ramakrishna Raju PV', '9959411112', 14.33),
-       (3L, 'psyam@solletsoft.com', 'dem000000005', 'Amaranath Chava', '8008550930', 15.44),
-       (3L, 'psyam@solletsoft.com', 'dem000000006', 'Jameel syedk', '9845658940', 11.11),
-       (3L, 'psyam@solletsoft.com', 'dem000000007', 'Kumarkk M', '8018512345', 12.55),
-       (3L, 'psyam@solletsoft.com', 'dem000000008', 'Ramakrishna Rajuk PV', '9959411112', 14.33),
-       (3L, 'psyam@solletsoft.com', 'dem000000009', 'Amaranath Chavak', '8008550930', 15.44),
+       (3L, 'psyam@soft.com', 'dem000000002', 'Jameel syed', '9845658940', 11.11),
+       (3L, 'psyam@soft.com', 'dem000000003', 'Kumar M', '8018512345', 12.55),
+       (3L, 'psyam@soft.com', 'dem000000004', 'Ramakrishna Raju PV', '9959411112', 14.33),
+       (3L, 'psyam@soft.com', 'dem000000005', 'Amaranath Chava', '8008550930', 15.44),
+       (3L, 'psyam@soft.com', 'dem000000006', 'Jameel syedk', '9845658940', 11.11),
+       (3L, 'psyam@soft.com', 'dem000000007', 'Kumarkk M', '8018512345', 12.55),
+       (3L, 'psyam@soft.com', 'dem000000008', 'Ramakrishna Rajuk PV', '9959411112', 14.33),
+       (3L, 'psyam@soft.com', 'dem000000009', 'Amaranath Chavak', '8008550930', 15.44),
 
-       (4L, 'kveeraraghavulu@solletsoft.com', 'apa000000003', 'Abdul Sajid Khan Mohammed', '9951834455', 66.66),
-       (4L, 'kveeraraghavulu@solletsoft.com', 'apa000000004', 'Shashank A', '9440347671', 55.55),
-       (4L, 'kveeraraghavulu@solletsoft.com', 'apa000000006', 'sateesh kumar', '9848384381', 3.19),
-       (4L, 'kveeraraghavulu@solletsoft.com', 'apa000000007', 'PRAMOD KUMAR SARPAM', '8019488894', 2.19),
-       (4L, 'kveeraraghavulu@solletsoft.com', 'apa000000009', 'mani kumar', '8977060010', 15.55),
+       (4L, 'kveeraraghavulu@soft.com', 'apa000000003', 'Abdul Sajid Khan Mohammed', '9951834455', 66.66),
+       (4L, 'kveeraraghavulu@soft.com', 'apa000000004', 'Shashank A', '9440347671', 55.55),
+       (4L, 'kveeraraghavulu@soft.com', 'apa000000006', 'sateesh kumar', '9848384381', 3.19),
+       (4L, 'kveeraraghavulu@soft.com', 'apa000000007', 'PRAMOD KUMAR SARPAM', '8019488894', 2.19),
+       (4L, 'kveeraraghavulu@soft.com', 'apa000000009', 'mani kumar', '8977060010', 15.55),
    )
    final_list = []
    final_tup = ''
@@ -70,7 +70,7 @@ def function1():
            for rows in row:
                print("rows::: ",rows)
                wr.writerow(rows)
-           fromaddr = "peyyalasyam@gmail.com"
+           fromaddr = "peyam@gmail.com"
 
            msg = MIMEMultipart()
            msg['From'] = fromaddr
@@ -87,7 +87,7 @@ def function1():
            msg.attach(part)
            server = smtplib.SMTP('smtp.gmail.com', 587)
            server.starttls()
-           server.login(fromaddr, "shamzzlve")
+           server.login(fromaddr, "shhhfhfe")
            text = msg.as_string()
            server.sendmail(fromaddr, toaddr, text)
            print("TASK DONE")
