@@ -69,7 +69,7 @@ def function1():
                print("row::",row)
            for rows in row:
                print("rows::: ",rows)
-           wr.writerow(rows)
+               wr.writerow(rows)
            fromaddr = "peyyalasyam@gmail.com"
 
            msg = MIMEMultipart()
