@@ -1,0 +1,100 @@
+import MySQLdb
+import smtplib
+from time import sleep
+from os import path
+import csv
+from email.MIMEMultipart import MIMEMultipart
+from email.MIMEText import MIMEText
+from email.MIMEBase import MIMEBase
+from email import encoders
+
+test = path.relpath("/home/sollet/Desktop/Details.csv")
+
+def function1():
+   tuple = (
+       (3L, 'psyam@solletsoft.com', 'dem000000002', 'Jameel syed', '9845658940', 11.11),
+       (3L, 'psyam@solletsoft.com', 'dem000000003', 'Kumar M', '8018512345', 12.55),
+       (3L, 'psyam@solletsoft.com', 'dem000000004', 'Ramakrishna Raju PV', '9959411112', 14.33),
+       (3L, 'psyam@solletsoft.com', 'dem000000005', 'Amaranath Chava', '8008550930', 15.44),
+       (3L, 'psyam@solletsoft.com', 'dem000000006', 'Jameel syedk', '9845658940', 11.11),
+       (3L, 'psyam@solletsoft.com', 'dem000000007', 'Kumarkk M', '8018512345', 12.55),
+       (3L, 'psyam@solletsoft.com', 'dem000000008', 'Ramakrishna Rajuk PV', '9959411112', 14.33),
+       (3L, 'psyam@solletsoft.com', 'dem000000009', 'Amaranath Chavak', '8008550930', 15.44),
+
+       (4L, 'kveeraraghavulu@solletsoft.com', 'apa000000003', 'Abdul Sajid Khan Mohammed', '9951834455', 66.66),
+       (4L, 'kveeraraghavulu@solletsoft.com', 'apa000000004', 'Shashank A', '9440347671', 55.55),
+       (4L, 'kveeraraghavulu@solletsoft.com', 'apa000000006', 'sateesh kumar', '9848384381', 3.19),
+       (4L, 'kveeraraghavulu@solletsoft.com', 'apa000000007', 'PRAMOD KUMAR SARPAM', '8019488894', 2.19),
+       (4L, 'kveeraraghavulu@solletsoft.com', 'apa000000009', 'mani kumar', '8977060010', 15.55),
+   )
+   final_list = []
+   final_tup = ''
+   mail_list = []
+   for i in tuple:
+       print "I values::",i
+       my_list = []
+       for j in tuple:
+           print "J values::",j
+           if i[0] ==j[0]:
+               print "true"
+               my_list.append(j)
+               print "my_list:::",my_list
+       if my_list not in final_list:
+           print "my_list not in final_list"
+           final_list.append(my_list)
+           print "final_list:::",final_list
+       print "final_list out:::",final_list
+   for group in final_list:
+       print"group:::",group
+       final_glist = []
+       for q in group:
+           print "Q :::::",q
+           my_tup = q[3], q[4], q[5]
+           print"my_tup:::",my_tup
+           final_glist.append(my_tup)
+           print"final_glist:::",final_glist
+           final_tup = q[1], final_glist
+           print"final_tup123:::",final_tup
+       mail_list.append(final_tup)
+       print "mail.lstappend:::",mail_list
+       for value in mail_list:
+           print"value::",value
+           toaddr = value[0]
+           print("toadd:::::",toaddr)
+           myfile = open(test, 'wb')
+           print 'myfile', myfile
+           wr = csv.writer(myfile, quoting=csv.QUOTE_ALL)
+           wr.writerow(['AGENT NAME', 'MOBILE NUMBER', 'AMOUNT'])
+           for row in value:
+               print("row::",row)
+           for rows in row:
+               print("rows::: ",rows)
+           wr.writerow(rows)
+           fromaddr = "peyyalasyam@gmail.com"
+
+           msg = MIMEMultipart()
+           msg['From'] = fromaddr
+           msg['To'] = toaddr
+           msg['Subject'] = "CP to Agent"
+           body = "PFA in CSV FORMAT"
+           msg.attach(MIMEText(body, 'plain'))
+           filename = "Details.csv"
+           attachment = open("/home/sollet/Desktop/Details.csv", "rb")
+           part = MIMEBase('application', 'octet-stream')
+           part.set_payload((attachment).read())
+           encoders.encode_base64(part)
+           part.add_header('Content-Disposition', "attachment; filename= %s" % filename)
+           msg.attach(part)
+           server = smtplib.SMTP('smtp.gmail.com', 587)
+           server.starttls()
+           server.login(fromaddr, "shamzzlve")
+           text = msg.as_string()
+           server.sendmail(fromaddr, toaddr, text)
+           print("TASK DONE")
+           server.quit()
+
+
+
+
+if __name__ == "__main__":
+   function1()
